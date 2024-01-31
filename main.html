@@ -43,7 +43,7 @@
 	<body>
 
 		<script type="text/javascript">
-		var current_screen = 'blank';
+		current_screen = 'blank';
 			function CreateMain() {
 				var main = document.createElement('div');
 				main.setAttribute('id','main');
@@ -57,8 +57,69 @@
 				img.src = "textures\\bg_head.png";
 				main.appendChild(img);
 				
-
+				var start = document.createElement('button');
+				start.setAttribute('id','start');
+				start.addEventListener('onclick',show());
+				main.appendChild(start);
+				
+				start.style.height = "70px";
+				start.style.width = "350px";
+				start.style.marginTop = "20px";
+				start.style.padding = "0px";
+				start.style.backgroundColor = "transparent";
+				start.style.border = "none";
+				start.style.outline = "none";
+				
+				var options = document.createElement('button');
+				options.setAttribute('id','options');
+				main.appendChild(options);
+				
+				options.style.height = "70px";
+				options.style.width = "350px";
+				options.style.marginTop = "20px";
+				options.style.marginLeft = "0px";
+				options.style.backgroundColor = "transparent";
+				options.style.border = "none";
+				options.style.outline = "none";
+				
+				var credits = document.createElement('button');
+				credits.setAttribute('id','credits');
+				main.appendChild(credits);
+				
+				credits.style.height = "70px";
+				credits.style.width = "350px";
+				credits.style.marginTop = "20px";
+				credits.style.marginLeft = "0px";
+				credits.style.backgroundColor = "transparent";
+				credits.style.border = "none";
+				credits.style.outline = "none";
+				
+				var exit = document.createElement('button');
+				exit.setAttribute('id','exit');
+				main.appendChild(exit);
+				
+				exit.style.height = "70px";
+				exit.style.width = "350px";
+				exit.style.marginTop = "20px";
+				exit.style.marginLeft = "0px";
+				exit.style.backgroundColor = "transparent";
+				exit.style.border = "none";
+				exit.style.outline = "none";
+				
+				var img1 = document.createElement("img");
+				img1.src = "textures\\bg_button.png";
+				start.style.backgroundImage = "url('" + img1.src + "')";
+				options.style.backgroundImage = "url('" + img1.src + "')";
+				credits.style.backgroundImage = "url('" + img1.src + "')";
+				exit.style.backgroundImage = "url('" + img1.src + "')";
+				
+				current_screen = "menu";
 			}
+			
+			function show() {
+				document.getElementById("main").innerHTML += "1owjghoisjhbdg";
+			}
+			
 		CreateMain()
 		</script>
 	</body>
