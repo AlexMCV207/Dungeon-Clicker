@@ -43,24 +43,35 @@
 	<body>
 
 		<script type="text/javascript">
-		current_screen = 'blank';
+		
+			current_screen = 'blank';
+
 			function CreateMain() {
 				var main = document.createElement('div');
 				main.setAttribute('id','main');
 				document.body.appendChild(main);
-
-				main.style.height = "940px";
-				main.style.margin = "auto";
-				main.style.marginTop = "200px";
+								
+				main.style.width = "100%";
+				main.style.height = "890px";
+				main.style.marginTop = "50px";
 				
-				var img = document.createElement("img");
-				img.src = "textures\\bg_head.png";
-				main.appendChild(img);
+				var submain = document.createElement('div');
+				submain.setAttribute('id','submain');
+				main.appendChild(submain);
+								
+				submain.style.width = "350px";
+				submain.style.height = "890px";
+				submain.style.margin = "auto";
+				
+				var img_main = document.createElement('img');
+				img_main.setAttribute('id','img_main');
+				img_main.src = 'textures\\bg_head.png';
+				submain.appendChild(img_main);
 				
 				var start = document.createElement('button');
 				start.setAttribute('id','start');
-				start.addEventListener('onclick',show());
-				main.appendChild(start);
+				start.setAttribute('onclick','startWindow()');
+				submain.appendChild(start);
 				
 				start.style.height = "70px";
 				start.style.width = "350px";
@@ -72,7 +83,8 @@
 				
 				var options = document.createElement('button');
 				options.setAttribute('id','options');
-				main.appendChild(options);
+				options.setAttribute('onclick','optionsWindow()');
+				submain.appendChild(options);
 				
 				options.style.height = "70px";
 				options.style.width = "350px";
@@ -84,7 +96,8 @@
 				
 				var credits = document.createElement('button');
 				credits.setAttribute('id','credits');
-				main.appendChild(credits);
+				credits.setAttribute('onclick','creditsWindow()');
+				submain.appendChild(credits);
 				
 				credits.style.height = "70px";
 				credits.style.width = "350px";
@@ -96,7 +109,7 @@
 				
 				var exit = document.createElement('button');
 				exit.setAttribute('id','exit');
-				main.appendChild(exit);
+				submain.appendChild(exit);
 				
 				exit.style.height = "70px";
 				exit.style.width = "350px";
@@ -106,21 +119,638 @@
 				exit.style.border = "none";
 				exit.style.outline = "none";
 				
-				var img1 = document.createElement("img");
-				img1.src = "textures\\bg_button.png";
-				start.style.backgroundImage = "url('" + img1.src + "')";
-				options.style.backgroundImage = "url('" + img1.src + "')";
-				credits.style.backgroundImage = "url('" + img1.src + "')";
-				exit.style.backgroundImage = "url('" + img1.src + "')";
+				var img1 = document.createElement('img');
+				img1.src = 'textures\\bg_button.png';
+				var img_button_start = document.createElement('img');
+				img_button_start.src = ('textures\\bg_button_start.png');
+				var img_button_options = document.createElement('img');
+				img_button_options.src = ('textures\\bg_button_options.png');
+				var img_button_credits = document.createElement('img');
+				img_button_credits.src = ('textures\\bg_button_credits.png');
+				var img_button_exit = document.createElement('img');
+				img_button_exit.src =('textures\\bg_button_exit.png');
 				
-				current_screen = "menu";
+				start.style.backgroundImage = "url('" + img_button_start.src + "')";
+				options.style.backgroundImage = "url('" + img_button_options.src + "')";
+				credits.style.backgroundImage = "url('" + img_button_credits.src + "')";
+				exit.style.backgroundImage = "url('" + img_button_exit.src + "')";
+				
+				current_screen = 'menu';
 			}
 			
-			function show() {
-				document.getElementById("main").innerHTML += "1owjghoisjhbdg";
+			function startWindow() {
+			
+				var img = document.getElementById('img_main');
+				if(current_screen == 'menu') {
+					img.remove();
+					start.remove();
+					options.remove();
+					credits.remove();
+					exit.remove();
+					submain.remove();
+				}
+				
+				if(current_screen == 'confirm_save_1') {
+					var choose_save = document.getElementById('choose_save');
+					var exit_button = document.getElementById('exit_button');
+					
+					confirm_save_1.remove();
+					button_yes.remove();
+					button_no.remove();
+					choose_save.remove();
+					exit_button.remove();
+				}
+				
+				if(current_screen == 'confirm_save_2') {
+					var choose_save = document.getElementById('choose_save');
+					var exit_button = document.getElementById('exit_button');
+					
+					confirm_save_2.remove();
+					button_yes.remove();
+					button_no.remove();
+					choose_save.remove();
+					exit_button.remove();
+				}
+				
+				if(current_screen == 'confirm_save_3') {
+					var choose_save = document.getElementById('choose_save');
+					var exit_button = document.getElementById('exit_button');
+					
+					confirm_save_3.remove();
+					button_yes.remove();
+					button_no.remove();
+					choose_save.remove();
+					exit_button.remove();
+				}
+				
+				var choose_save = document.createElement('div');
+				choose_save.setAttribute('id','choose_save');
+				main.appendChild(choose_save);
+				
+				var img_choose_save = document.createElement('img');
+				img_choose_save.src = ('textures\\bg_universal.png');
+				
+				var exit_button = document.createElement('button');
+				exit_button.setAttribute('id','exit_button');
+				exit_button.setAttribute('onclick','exitStart()');
+				choose_save.appendChild(exit_button);
+				
+				var img_exit_button = document.createElement('img');
+				img_exit_button.src = 'textures\\exit_button.png';
+				
+				main.style.height = "890px";
+				
+				choose_save.style.width = "1100px";
+				choose_save.style.height = "840px";
+				choose_save.style.margin = "auto";
+				choose_save.style.marginTop = "50px";
+				choose_save.style.backgroundImage = "url('" + img_choose_save.src + "')";
+				
+				exit_button.style.width = "70px";
+				exit_button.style.height = "70px";
+				exit_button.style.marginLeft = "1110px";
+				exit_button.style.backgroundColor = "transparent";
+				exit_button.style.border = "none";
+				exit_button.style.outline = "none";
+				exit_button.style.backgroundImage = "url('" + img_exit_button.src + "')";
+				
+				var save1 = document.createElement('button');
+				save1.setAttribute('id','save1');
+				save1.setAttribute('onclick','loadSave1()');
+				choose_save.appendChild(save1);
+				
+				var save2 = document.createElement('button');
+				save2.setAttribute('id','save2');
+				save2.setAttribute('onclick','loadSave2()');
+				choose_save.appendChild(save2);
+				
+				var save3 = document.createElement('button');
+				save3.setAttribute('id','save3');
+				save3.setAttribute('onclick','loadSave3()');
+				choose_save.appendChild(save3);
+				
+				var img_save_1 = document.createElement('img');
+				img_save_1.src = 'textures\\img_save_1.png';
+				
+				var img_save_2 = document.createElement('img');
+				img_save_2.src = 'textures\\img_save_2.png';
+				
+				var img_save_3 = document.createElement('img');
+				img_save_3.src = 'textures\\img_save_3.png';
+				
+				save1.style.width = "280px";
+				save1.style.height = "700px";
+				save1.style.marginLeft = "65px";
+				save1.style.marginRight = "65px";
+				save1.style.backgroundImage = "url('" + img_save_1.src + "')";
+				save1.style.backgroundColor = "transparent";
+				save1.style.border = "none";
+				save1.style.outline = "none";
+				
+				save2.style.width = "280px";
+				save2.style.height = "700px";
+				save2.style.marginRight = "65px";
+				save2.style.backgroundImage = "url('" + img_save_2.src + "')";
+				save2.style.backgroundColor = "transparent";
+				save2.style.border = "none";
+				save2.style.outline = "none";
+				
+				save3.style.width = "280px";
+				save3.style.height = "700px";
+				save3.style.marginRight = "65px";
+				save3.style.backgroundImage = "url('" + img_save_3.src + "')";
+				save3.style.backgroundColor = "transparent";
+				save3.style.border = "none";
+				save3.style.outline = "none";
+				
+				current_screen = 'start_menu';
 			}
 			
+			function confirmSaveLoad1(confirm) {
+				
+				save1.remove();
+				save2.remove();
+				save3.remove();
+				
+				confirm_save_1 = document.createElement('div');
+				confirm_save_1.setAttribute('id','confirm_save_1');
+				choose_save.appendChild(confirm_save_1);
+				
+				img_confirm_save_1 = document.createElement('img');
+				img_confirm_save_1.src = 'textures\\img_confirm_save_1.png';
+				
+				confirm_save_1.style.width = "400px";
+				confirm_save_1.style.height = "200px";
+				confirm_save_1.style.marginTop = "100px";
+				confirm_save_1.style.marginLeft = "350px";
+				confirm_save_1.style.backgroundImage = "url('" + img_confirm_save_1.src + "')";
+				confirm_save_1.style.backgroundColor = "transparent";
+				confirm_save_1.style.border = "none";
+				confirm_save_1.style.outline = "none";
+				
+				button_yes = document.createElement('button');
+				button_yes.setAttribute('id','button_yes');
+				button_yes.setAttribute('onclick','startGame()');
+				confirm_save_1.appendChild(button_yes);
+				
+				button_no = document.createElement('button');
+				button_no.setAttribute('id','button_no');
+				button_no.setAttribute('onclick','startWindow()');
+				confirm_save_1.appendChild(button_no);
+				
+				img_button_yes = document.createElement('img');
+				img_button_yes.src = 'textures\\img_button_yes.png';
+				
+				img_button_no = document.createElement('img');
+				img_button_no.src = 'textures\\img_button_no.png';
+				
+				button_yes.style.width = "175px";
+				button_yes.style.height = "65px";
+				button_yes.style.marginLeft = "15px";
+				button_yes.style.marginTop = "90px";
+				button_yes.style.backgroundImage = "url('" + img_button_yes.src + "')";
+				button_yes.style.backgroundColor = "transparent";
+				button_yes.style.border = "none";
+				button_yes.style.outline = "none";
+				
+				button_no.style.width = "175px";
+				button_no.style.height = "65px";
+				button_no.style.marginLeft = "20px";
+				button_no.style.marginTop = "90px";
+				button_no.style.backgroundImage = "url('" + img_button_no.src + "')";
+				button_no.style.backgroundColor = "transparent";
+				button_no.style.border = "none";
+				button_no.style.outline = "none";
+				
+				current_screen = 'confirm_save_1';
+			}
+			
+			function confirmSaveLoad2(confirm) {
+				
+				save1.remove();
+				save2.remove();
+				save3.remove();
+				
+				confirm_save_2 = document.createElement('div');
+				confirm_save_2.setAttribute('id','confirm_save_2');
+				choose_save.appendChild(confirm_save_2);
+				
+				img_confirm_save_2 = document.createElement('img');
+				img_confirm_save_2.src = 'textures\\img_confirm_save_2.png';
+				
+				confirm_save_2.style.width = "400px";
+				confirm_save_2.style.height = "200px";
+				confirm_save_2.style.marginTop = "100px";
+				confirm_save_2.style.marginLeft = "350px";
+				confirm_save_2.style.backgroundImage = "url('" + img_confirm_save_2.src + "')";
+				confirm_save_2.style.backgroundColor = "transparent";
+				confirm_save_2.style.border = "none";
+				confirm_save_2.style.outline = "none";
+				
+				button_yes = document.createElement('button');
+				button_yes.setAttribute('id','button_yes');
+				button_yes.setAttribute('onclick','startGame()');
+				confirm_save_2.appendChild(button_yes);
+				
+				button_no = document.createElement('button');
+				button_no.setAttribute('id','button_no');
+				button_no.setAttribute('onclick','startWindow()');
+				confirm_save_2.appendChild(button_no);
+				
+				img_button_yes = document.createElement('img');
+				img_button_yes.src = 'textures\\img_button_yes.png';
+				
+				img_button_no = document.createElement('img');
+				img_button_no.src = 'textures\\img_button_no.png';
+				
+				button_yes.style.width = "175px";
+				button_yes.style.height = "65px";
+				button_yes.style.marginLeft = "15px";
+				button_yes.style.marginTop = "90px";
+				button_yes.style.backgroundImage = "url('" + img_button_yes.src + "')";
+				button_yes.style.backgroundColor = "transparent";
+				button_yes.style.border = "none";
+				button_yes.style.outline = "none";
+				
+				button_no.style.width = "175px";
+				button_no.style.height = "65px";
+				button_no.style.marginLeft = "20px";
+				button_no.style.marginTop = "90px";
+				button_no.style.backgroundImage = "url('" + img_button_no.src + "')";
+				button_no.style.backgroundColor = "transparent";
+				button_no.style.border = "none";
+				button_no.style.outline = "none";
+				
+				current_screen = 'confirm_save_2';
+			}
+			
+			function confirmSaveLoad3(confirm) {
+				
+				save1.remove();
+				save2.remove();
+				save3.remove();
+				
+				confirm_save_3 = document.createElement('div');
+				confirm_save_3.setAttribute('id','confirm_save_3');
+				choose_save.appendChild(confirm_save_3);
+				
+				img_confirm_save_3 = document.createElement('img');
+				img_confirm_save_3.src = 'textures\\img_confirm_save_3.png';
+				
+				confirm_save_3.style.width = "400px";
+				confirm_save_3.style.height = "200px";
+				confirm_save_3.style.marginTop = "100px";
+				confirm_save_3.style.marginLeft = "350px";
+				confirm_save_3.style.backgroundImage = "url('" + img_confirm_save_3.src + "')";
+				confirm_save_3.style.backgroundColor = "transparent";
+				confirm_save_3.style.border = "none";
+				confirm_save_3.style.outline = "none";
+				
+				button_yes = document.createElement('button');
+				button_yes.setAttribute('id','button_yes');
+				button_yes.setAttribute('onclick','startGame()');
+				confirm_save_3.appendChild(button_yes);
+				
+				button_no = document.createElement('button');
+				button_no.setAttribute('id','button_no');
+				button_no.setAttribute('onclick','startWindow()');
+				confirm_save_3.appendChild(button_no);
+				
+				img_button_yes = document.createElement('img');
+				img_button_yes.src = 'textures\\img_button_yes.png';
+				
+				img_button_no = document.createElement('img');
+				img_button_no.src = 'textures\\img_button_no.png';
+				
+				button_yes.style.width = "175px";
+				button_yes.style.height = "65px";
+				button_yes.style.marginLeft = "15px";
+				button_yes.style.marginTop = "90px";
+				button_yes.style.backgroundImage = "url('" + img_button_yes.src + "')";
+				button_yes.style.backgroundColor = "transparent";
+				button_yes.style.border = "none";
+				button_yes.style.outline = "none";
+				
+				button_no.style.width = "175px";
+				button_no.style.height = "65px";
+				button_no.style.marginLeft = "20px";
+				button_no.style.marginTop = "90px";
+				button_no.style.backgroundImage = "url('" + img_button_no.src + "')";
+				button_no.style.backgroundColor = "transparent";
+				button_no.style.border = "none";
+				button_no.style.outline = "none";
+				
+				current_screen = 'confirm_save_3';
+			}
+			
+			function loadSave1() {
+				confirm = "";
+				confirmSaveLoad1(confirm)
+				if( confirm == "yes" || confirm == "no") {
+					main.remove()
+				}	
+				
+			}
+			
+			function loadSave2() {
+				confirm = "";
+				confirmSaveLoad2(confirm)
+				if( confirm == "yes" || confirm == "no") {
+					main.remove()
+				}	
+				
+			}
+			
+			function loadSave3() {
+				confirm = "";
+				confirmSaveLoad3(confirm)
+				if( confirm == "yes" || confirm == "no") {
+					main.remove()
+				}	
+				
+			}
+			
+			function optionsWindow() {
+			
+				var img = document.getElementById('img_main');
+				
+				img.remove();
+				start.remove();
+				options.remove();
+				credits.remove();
+				exit.remove();
+				submain.remove();
+				
+				var options_tab = document.createElement('div');
+				options_tab.setAttribute('id','options_tab');
+				main.appendChild(options_tab);
+				
+				var img_options_tab = document.createElement('img');
+				img_options_tab.src = 'textures\\bg_universal.png';
+				
+				var exit_button = document.createElement('button');
+				exit_button.setAttribute('id','exit_button');
+				exit_button.setAttribute('onclick','exitOptions()');
+				options_tab.appendChild(exit_button);
+				
+				var img_exit_button = document.createElement('img');
+				img_exit_button.src = 'textures\\exit_button.png';
+				
+			
+				main.style.height = "890px";
+				
+				options_tab.style.width = "1100px";
+				options_tab.style.height = "840px";
+				options_tab.style.margin = "auto";
+				options_tab.style.marginTop = "50px";
+				options_tab.style.backgroundImage = "url('" + img_options_tab.src + "')";
+				
+				exit_button.style.width = "70px";
+				exit_button.style.height = "70px";
+				exit_button.style.marginLeft = "1110px";
+				exit_button.style.backgroundColor = "transparent";
+				exit_button.style.border = "none";
+				exit_button.style.outline = "none";
+				exit_button.style.backgroundImage = "url('" + img_exit_button.src + "')";
+				
+				current_screen = 'options_tab';
+			}
+			
+			function creditsWindow() 	{
+				
+				var img = document.getElementById('img_main');
+				
+				img.remove();
+				start.remove();
+				options.remove();
+				credits.remove();
+				exit.remove();
+				submain.remove();
+				
+				var credits_tab = document.createElement('div');
+				credits_tab.setAttribute('id','credits_tab');
+				main.appendChild(credits_tab);
+				
+				var img_credits_tab = document.createElement('img');
+				img_credits_tab.setAttribute('id','img_credits');
+				img_credits_tab.src = 'textures\\bg_universal.png';
+				
+				var exit_button = document.createElement('button');
+				exit_button.setAttribute('id','exit_button');
+				exit_button.setAttribute('onclick','exitCredits()');
+				credits_tab.appendChild(exit_button);
+				
+				var img_exit_button = document.createElement('img');
+				img_exit_button.src = 'textures\\exit_button.png';
+				
+				main.style.height = "890px";
+				
+				credits_tab.style.width = "1100px";
+				credits_tab.style.height = "840px";
+				credits_tab.style.margin = "auto";
+				credits_tab.style.marginTop = "50px";
+				credits_tab.style.backgroundImage = "url('" + img_credits_tab.src + "')";
+				
+				exit_button.style.width = "70px";
+				exit_button.style.height = "70px";
+				exit_button.style.marginLeft = "1110px";
+				exit_button.style.backgroundColor = "transparent";
+				exit_button.style.border = "none";
+				exit_button.style.outline = "none";
+				exit_button.style.backgroundImage = "url('" + img_exit_button.src + "')";
+				
+				current_screen = 'credits_tab';
+			}
+			
+			function exitStart() {
+			
+				var exit_button = document.getElementById('exit_button');
+				
+				choose_save.remove();
+				exit_button.remove();
+				main.remove();
+				
+				CreateMain();
+			}
+			
+			function exitOptions() {
+				
+				var exit_button = document.getElementById('exit_button');
+				
+				options_tab.remove();
+				exit_button.remove();
+				main.remove();
+				
+				CreateMain();
+				
+			}
+			
+			function exitCredits() {
+				
+				var exit_button = document.getElementById('exit_button');
+				
+				credits_tab.remove();
+				exit_button.remove();
+				main.remove();
+				
+				CreateMain();
+				
+			}
+			
+			function startGame() {
+			
+				var main = document.getElementById('main');	
+				main.remove();
+				
+				var main1 = document.createElement('div');
+				main1.setAttribute('id','main1');
+				document.body.appendChild(main1);
+				
+				main1.style.width = "1850px";
+				main1.style.height = "935px";
+				
+				var l_side = document.createElement('span');
+				l_side.setAttribute('id','l_side');
+				main1.appendChild(l_side);
+				
+				l_side.style.width = "400px";
+				l_side.style.height = "935px";
+				l_side.style.marginLeft = "5px";
+				l_side.style.display = "inline-block";
+				l_side.style.float = "left";
+				
+				var middle = document.createElement('span');
+				middle.setAttribute('id','middle');
+				main1.appendChild(middle);
+				
+				middle.style.width = "1020px";
+				middle.style.height = "935px";
+				middle.style.display = "inline-block";
+				middle.style.float = "left";
+				
+				var r_side = document.createElement('span');
+				r_side.setAttribute('id','r_side');
+				main1.appendChild(r_side);
+				
+				r_side.style.width = "400px";
+				r_side.style.height = "935px";
+				r_side.style.display = "inline-block";
+				r_side.style.float = "left";
+				
+				
+				var img_main = document.createElement('img');
+				img_main.setAttribute('id','img_main');
+				img_main.src = 'textures\\bg_head.png';
+				l_side.appendChild(img_main);
+
+				img_main.style.backgroundImage = "url('" + img_main.src + "')";
+				
+				var armory_button = document.createElement('button');
+				armory_button.setAttribute('id','armory_button');
+				l_side.appendChild(armory_button);
+				
+				var img_armory_button = document.createElement('img');
+				img_armory_button.setAttribute('id','img_armory_button');
+				img_armory_button.src = 'textures\\armory_button.png';
+				armory_button.appendChild(img_armory_button);
+				
+				armory_button.style.width = "350px";
+				armory_button.style.height = "70px";
+				armory_button.style.marginTop = "130px";
+				armory_button.style.backgroundColor = "transparent";
+				armory_button.style.border = "none";
+				armory_button.style.outline = "none";
+				
+				var skills_button = document.createElement('button');
+				skills_button.setAttribute('id','skills_button');
+				l_side.appendChild(skills_button);
+				
+				var img_skills_button = document.createElement('img');
+				img_skills_button.src = 'textures\\skills_button.png';
+				skills_button.appendChild(img_skills_button);
+				
+				skills_button.style.width = "350px";
+				skills_button.style.height = "70px";
+				skills_button.style.marginTop = "10px";
+				skills_button.style.backgroundColor = "transparent";
+				skills_button.style.border = "none";
+				skills_button.style.outline = "none";
+				
+				
+				//kolejno: inventory, enemies, (puste), achievments, save, leave
+				
+				
+				
+				var lvl_bar = document.createElement('div');
+				lvl_bar.setAttribute('id','lvl_bar');
+				middle.appendChild(lvl_bar);
+				
+				lvl_bar.style.width = "1020px";
+				lvl_bar.style.height = "100px";
+				
+				var game_main = document.createElement('div');
+				game_main.setAttribute('id','game_main');
+				middle.appendChild(game_main);
+				
+				var img_game_main = document.createElement('img');
+				img_game_main.src = 'textures\\bg_game.png';
+				game_main.appendChild(img_game_main);
+				
+				//prototyp przycisku (send help)
+				
+				var but = document.createElement('button');
+				but.setAttribute('id','but');
+				but.setAttribute('onclick','dmg()');
+				game_main.appendChild(but);
+				
+				var div = document.createElement('p');
+				div.setAttribute('id','div');
+				div.innerHTML = "0";
+				game_main.appendChild(div);
+
+				//koniec
+				
+				game_main.style.width = "1020px";
+				game_main.style.height = "835px";
+				
+				img_game_main.style.backgroundImage = "url('" + img_game_main.src + "')";
+				
+				var player_healthbar = document.createElement('div');
+				player_healthbar.setAttribute('id','player_healthbar');
+				game_main.appendChild(player_healthbar);
+				
+				player_healthbar.style.width = "1020px";
+				player_healthbar.style.height = "120px";
+				
+				var player_stats = document.createElement('div');
+				player_stats.setAttribute('id','player_stats');
+				r_side.appendChild(player_stats);
+				
+				var img_player_stats = document.createElement('img');
+				img_player_stats.src = 'textures\\img_player_stats.png';
+				player_stats.appendChild(img_player_stats);
+				
+				player_stats.style.width = "350px";
+				player_stats.style.height = "560px";
+				player_stats.style.marginLeft = "40px";
+				player_stats.style.marginTop = "350px";
+				
+			}
+			
+			// funkcja do tego
+			
+			function dmg() {
+				var c = document.getElementById('div');
+				div1 += 1;
+				c.innerHTML = div1;
+			}
 		CreateMain()
+		
+		//a tu dane
+		
+		var div1 = 0;
+		var c = document.getElementById('div1');
+		
 		</script>
 	</body>
 </html>
