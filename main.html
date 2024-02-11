@@ -1,44 +1,7 @@
 <!DOCTYPE html>
 	<head>
 	<meta charset="utf-8">
-	<style>
-		body {
-			background-image:url(textures\\bg.png);
-		}
-		#main {
-			width:500px;
-			height:940px;
-			margin:auto;
-		}
-		#play {
-			width:300px;
-			height:60px;
-			margin-left:100px;
-			margin-top:40px;
-		}
-		#options {
-			width:300px;
-			height:60px;
-			margin-left:100px;
-			margin-top:20px;
-		}
-		#credits {
-			width:300px;
-			height:60px;
-			margin-left:100px;
-			margin-top:20px;
-		}
-		#exit {
-			width:300px;
-			height:60px;
-			margin-left:100px;
-			margin-top:20px;
-		}
-		#title_image{
-			margin-left:65px;
-			margin-top:200px;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
 
@@ -676,10 +639,80 @@
 				skills_button.style.border = "none";
 				skills_button.style.outline = "none";
 				
+				var inventory_button = document.createElement('button');
+				inventory_button.setAttribute('id','inventory_button');
+				l_side.appendChild(inventory_button);
 				
-				//kolejno: inventory, enemies, (puste), achievments, save, leave
+				var img_inventory_button = document.createElement('img');
+				img_inventory_button.src = 'textures\\inventory_button.png';
+				inventory_button.appendChild(img_inventory_button);
 				
+				inventory_button.style.width = "350px";
+				inventory_button.style.height = "70px";
+				inventory_button.style.marginTop = "10px";
+				inventory_button.style.backgroundColor = "transparent";
+				inventory_button.style.border = "none";
+				inventory_button.style.outline = "none";
 				
+				var enemies_button = document.createElement('button');
+				enemies_button.setAttribute('id','enemies_button');
+				l_side.appendChild(enemies_button);
+				
+				var img_enemies_button = document.createElement('img');
+				img_enemies_button.src = 'textures\\enemies_button.png';
+				enemies_button.appendChild(img_enemies_button);
+				
+				enemies_button.style.width = "350px";
+				enemies_button.style.height = "70px";
+				enemies_button.style.marginTop = "10px";
+				enemies_button.style.backgroundColor = "transparent";
+				enemies_button.style.border = "none";
+				enemies_button.style.outline = "none";
+				
+				var achievments_button = document.createElement('button');
+				achievments_button.setAttribute('id','achievments_button');
+				l_side.appendChild(achievments_button);
+				
+				var img_achievments_button = document.createElement('img');
+				img_achievments_button.src = 'textures\\achievments_button.png';
+				achievments_button.appendChild(img_achievments_button);
+				
+				achievments_button.style.width = "350px";
+				achievments_button.style.height = "70px";
+				achievments_button.style.marginTop = "10px";
+				achievments_button.style.backgroundColor = "transparent";
+				achievments_button.style.border = "none";
+				achievments_button.style.outline = "none";
+				
+				var save_button = document.createElement('button');
+				save_button.setAttribute('id','save_button');
+				l_side.appendChild(save_button);
+				
+				var img_save_button = document.createElement('img');
+				img_save_button.src = 'textures\\save_button.png';
+				save_button.appendChild(img_save_button);
+				
+				save_button.style.width = "350px";
+				save_button.style.height = "70px";
+				save_button.style.marginTop = "10px";
+				save_button.style.backgroundColor = "transparent";
+				save_button.style.border = "none";
+				save_button.style.outline = "none";
+				
+				var exit_button_game = document.createElement('button');
+				exit_button_game.setAttribute('id','exit_button_game');
+				l_side.appendChild(exit_button_game);
+				
+				var img_exit_button_game = document.createElement('img');
+				img_exit_button_game.src = 'textures\\exit_button_game.png';
+				exit_button_game.appendChild(img_exit_button_game);
+				
+				exit_button_game.style.width = "350px";
+				exit_button_game.style.height = "70px";
+				exit_button_game.style.marginTop = "10px";
+				exit_button_game.style.backgroundColor = "transparent";
+				exit_button_game.style.border = "none";
+				exit_button_game.style.outline = "none";
 				
 				var lvl_bar = document.createElement('div');
 				lvl_bar.setAttribute('id','lvl_bar');
@@ -694,26 +727,27 @@
 				
 				var img_game_main = document.createElement('img');
 				img_game_main.src = 'textures\\bg_game.png';
-				game_main.appendChild(img_game_main);
-				
-				//prototyp przycisku (send help)
-				
-				var but = document.createElement('button');
-				but.setAttribute('id','but');
-				but.setAttribute('onclick','dmg()');
-				game_main.appendChild(but);
-				
-				var div = document.createElement('p');
-				div.setAttribute('id','div');
-				div.innerHTML = "0";
-				game_main.appendChild(div);
-
-				//koniec
 				
 				game_main.style.width = "1020px";
 				game_main.style.height = "835px";
+				game_main.style.backgroundImage = "url('" + img_game_main.src + "')";
 				
 				img_game_main.style.backgroundImage = "url('" + img_game_main.src + "')";
+				
+				var enemy_stats_health = document.createElement('p');
+				enemy_stats_health.setAttribute('id','enemy_stats_health');
+				enemy_stats_health.innerHTML = enemy_health;
+				game_main.appendChild(enemy_stats_health);
+				
+				var attack_button = document.createElement('button');
+				attack_button.setAttribute('id','attack_button');
+				attack_button.setAttribute('onclick','player_deal_damage()');
+				game_main.appendChild(attack_button);
+				
+				attack_button.style.width = "250px";
+				attack_button.style.height = "60px";
+				attack_button.style.marginLeft = "410px";
+				attack_button.style.marginTop = "695px";
 				
 				var player_healthbar = document.createElement('div');
 				player_healthbar.setAttribute('id','player_healthbar');
@@ -728,29 +762,96 @@
 				
 				var img_player_stats = document.createElement('img');
 				img_player_stats.src = 'textures\\img_player_stats.png';
-				player_stats.appendChild(img_player_stats);
 				
 				player_stats.style.width = "350px";
 				player_stats.style.height = "560px";
 				player_stats.style.marginLeft = "40px";
 				player_stats.style.marginTop = "350px";
+				player_stats.style.backgroundImage = "url('" + img_player_stats.src + "')";
+				
+				var player_stats_health = document.createElement('p');
+				player_stats_health.setAttribute('id','player_stats_health');
+				player_stats_health.innerHTML = player_health;
+				player_stats.appendChild(player_stats_health);
+				
+				player_stats_health.style.paddingLeft = "20px";
+				player_stats_health.style.paddingTop = "80px";
 				
 			}
-			
-			// funkcja do tego
-			
-			function dmg() {
-				var c = document.getElementById('div');
-				div1 += 1;
-				c.innerHTML = div1;
-			}
+
 		CreateMain()
 		
-		//a tu dane
+		var current_turn = 0;
+		var current_enemy = 0;
+		var difficulty_multiplier = 1;
 		
-		var div1 = 0;
-		var c = document.getElementById('div1');
+		if(current_enemy < 2)
+		{
+			var enemy_random = Math.floor(Math.random() * 3);
+			
+			if(enemy_random == 0)
+			{
+				enemy_name = "weak slime";
+				var enemy_health = Math.floor(16 * difficulty_multiplier);
+				var enemy_damage = Math.floor(2 * difficulty_multiplier);
+				var enemy_defense = 0;
+							
+				var gold_reward = 2;
+				var exp_reward = 5;
+			} else if(enemy_random == 1)
+			{
+				enemy_name = "weak goblin";
+				var enemy_health = Math.floor(11 * difficulty_multiplier);
+				var enemy_damage = Math.floor(3 * difficulty_multiplier);
+				var enemy_defense = 0;
+							
+				var gold_reward = 6;
+				var exp_reward = 2;
+			} else if(enemy_random = 2)
+			{
+				enemy_name = "boar";
+				var enemy_health = Math.floor(14 * difficulty_multiplier);
+				var enemy_damage = Math.floor(2 * difficulty_multiplier);
+				var enemy_defense = Math.floor(1 * difficulty_multiplier);
+							
+				var gold_reward = 5;
+				var exp_reward = 5;
+			}	
+		}
 		
+		var player_health = 40;
+		var player_damage = 3;
+		var player_defense = 0;
+		function enemy_deal_damage()
+		{
+			if(current_turn == 0)
+			{
+				var player_health_reference = document.getElementById('player_stats_health');
+				if(player_defense > enemy_damage)
+				{
+					player_health -= 1;
+				} else {
+					player_health -= (enemy_damage - player_defense);
+				}
+				player_health_reference.innerHTML = player_health;
+				current_turn -= 1;
+			}
+		}
+		function player_deal_damage()
+		{
+			if(current_turn == 0)
+			{
+				var enemy_health_reference = document.getElementById('enemy_stats_health');
+				if(enemy_defense > player_damage)
+				{
+					enemy_health -= 1;
+				} else {
+					enemy_health -= (player_damage - enemy_defense);
+				}
+				enemy_health_reference.innerHTML = enemy_health;
+			}
+		}
+	
 		</script>
 	</body>
 </html>
