@@ -570,7 +570,7 @@
 				document.body.appendChild(main1);
 				
 				main1.style.width = "1850px";
-				main1.style.height = "935px";
+				main1.style.height = "930px";
 				
 				var l_side = document.createElement('span');
 				l_side.setAttribute('id','l_side');
@@ -607,6 +607,36 @@
 				l_side.appendChild(img_main);
 
 				img_main.style.backgroundImage = "url('" + img_main.src + "')";
+				
+				var gold = document.createElement('div');
+				gold.setAttribute('id','gold');
+				l_side.appendChild(gold);
+				
+				gold.style.width = '400px';
+				gold.style.height = '20px';
+				
+				var gold_icon = document.createElement('img');
+				gold_icon.setAttribute('id','gold_icon.png');
+				gold_icon.src = 'textures\\gold_icon.png';
+				gold.appendChild(gold_icon);
+				
+				gold_icon.style.width = '20px';
+				gold_icon.style.height = '20px';
+				gold_icon.style.marginLeft = '10px';
+				gold_icon.style.marginTop = '25px';
+				gold_icon.style.position = 'absolute';
+				
+				var player_stats_gold = document.createElement('p');
+				player_stats_gold.setAttribute('id','player_stats_gold');
+				player_stats_gold.innerHTML = player_gold;
+				gold.appendChild(player_stats_gold);
+				
+				player_stats_gold.style.width = '400px';
+				player_stats_gold.style.height = '25px';
+				player_stats_gold.style.marginLeft = '40px';
+				player_stats_gold.style.position = 'absolute';
+				player_stats_gold.style.fontSize = '25px';
+				player_stats_gold.style.color = 'gold';
 				
 				var armory_button = document.createElement('button');
 				armory_button.setAttribute('id','armory_button');
@@ -718,7 +748,7 @@
 				lvl_bar.setAttribute('id','lvl_bar');
 				middle.appendChild(lvl_bar);
 				
-				lvl_bar.style.width = "1020px";
+				lvl_bar.style.width = "1000px";
 				lvl_bar.style.height = "100px";
 				
 				var game_main = document.createElement('div');
@@ -728,33 +758,135 @@
 				var img_game_main = document.createElement('img');
 				img_game_main.src = 'textures\\bg_game.png';
 				
-				game_main.style.width = "1020px";
+				game_main.style.width = "1000px";
 				game_main.style.height = "835px";
 				game_main.style.backgroundImage = "url('" + img_game_main.src + "')";
 				
 				img_game_main.style.backgroundImage = "url('" + img_game_main.src + "')";
+				
+				var enemy_stats_name = document.createElement('h3');
+				enemy_stats_name.setAttribute('id','enemy_stats_name');
+				enemy_stats_name.innerHTML = enemy_name;
+				game_main.appendChild(enemy_stats_name);
+				
+				enemy_stats_name.style.fontSize = '50px';
+				enemy_stats_name.style.position = 'absolute';
+				enemy_stats_name.style.marginTop = '5px';
+				enemy_stats_name.style.marginLeft = '5px';
 				
 				var enemy_stats_health = document.createElement('p');
 				enemy_stats_health.setAttribute('id','enemy_stats_health');
 				enemy_stats_health.innerHTML = enemy_health;
 				game_main.appendChild(enemy_stats_health);
 				
+				enemy_stats_health.style.fontSize = '25px';
+				enemy_stats_health.style.position = 'absolute';
+				enemy_stats_health.style.marginTop = '52px';
+				enemy_stats_health.style.marginLeft = '30px';
+				
+				var health_icon = document.createElement('img');
+				health_icon.setAttribute('id','health_icon');
+				health_icon.src = 'textures\\health_icon.png';
+				game_main.appendChild(health_icon);
+				
+				health_icon.style.position = 'absolute';
+				health_icon.style.marginLeft = '5px';
+				health_icon.style.marginTop = '55px';
+				
+				var enemy_stats_damage = document.createElement('p');
+				enemy_stats_damage.setAttribute('id','enemy_stats_damage');
+				enemy_stats_damage.innerHTML = enemy_damage;
+				game_main.appendChild(enemy_stats_damage);
+				
+				enemy_stats_damage.style.fontSize = '25px';
+				enemy_stats_damage.style.position = 'absolute';
+				enemy_stats_damage.style.marginLeft = '30px';
+				enemy_stats_damage.style.marginTop = '78px';
+				
+				var damage_icon = document.createElement('img');
+				damage_icon.setAttribute('id','damage_icon');
+				damage_icon.src = 'textures\\damage_icon.png';
+				game_main.appendChild(damage_icon);
+				
+				damage_icon.style.position = 'absolute';
+				damage_icon.style.marginLeft = '5px';
+				damage_icon.style.marginTop = '78px';
+				
+				var enemy_stats_defense = document.createElement('p');
+				enemy_stats_defense.setAttribute('id','enemy_stats_defense');
+				enemy_stats_defense.innerHTML = enemy_defense;
+				game_main.appendChild(enemy_stats_defense);
+				
+				enemy_stats_defense.style.fontSize = '25px';
+				enemy_stats_defense.style.position = 'absolute';
+				enemy_stats_defense.style.marginLeft = '30px';
+				enemy_stats_defense.style.marginTop = '100px';
+				
+				var defense_icon = document.createElement('img');
+				defense_icon.setAttribute('id','defense_icon');
+				defense_icon.src = 'textures\\defense_icon.png';
+				game_main.appendChild(defense_icon);
+				
+				defense_icon.style.position = 'absolute';
+				defense_icon.style.marginLeft = '5px';
+				defense_icon.style.marginTop = '102px';
+				
 				var attack_button = document.createElement('button');
 				attack_button.setAttribute('id','attack_button');
 				attack_button.setAttribute('onclick','player_deal_damage()');
+				attack_button.innerHTML = "Attack!";
 				game_main.appendChild(attack_button);
+
 				
-				attack_button.style.width = "250px";
-				attack_button.style.height = "60px";
-				attack_button.style.marginLeft = "410px";
-				attack_button.style.marginTop = "695px";
+				var attack_button_img = document.createElement('img');
+				attack_button_img.src = 'textures\\df_button.png';
+				
+				attack_button.style.width = '350px';
+				attack_button.style.height = '70px';
+				attack_button.style.marginLeft = '335px';
+				attack_button.style.marginTop = '710px';
+				attack_button.style.backgroundImage = 'url("' + attack_button_img.src + '")';
+				attack_button.style.backgroundColor = 'transparent';
+				attack_button.style.border = 'none';
+				attack_button.style.outline = 'none';
+				attack_button.style.fontSize = '38px';
+				attack_button.style.fontFamily = 'alagard';
+				
+				var enemy_img_display = document.createElement('span');
+				enemy_img_display.setAttribute('id','enemy_img_display');
+				game_main.appendChild(enemy_img_display);
+				
+				enemy_img_display.style.width = '300px';
+				enemy_img_display.style.height = '350px';
+				enemy_img_display.style.marginTop = '300px';
+				enemy_img_display.style.marginLeft = '-340px';
+				enemy_img_display.style.position = 'absolute';
+				
+				if(enemy_name == "weak slime")
+				{
+					var weak_slime_img = document.createElement('img');
+					weak_slime_img.src = "textures\\weak_slime.png";
+					enemy_img_display.style.backgroundImage = "url('" + weak_slime_img.src + "')";
+				}
+				if(enemy_name == "weak goblin")
+				{
+					var weak_goblin = document.createElement('img');
+					weak_goblin.src = "textures\\weak_goblin.png";
+					enemy_img_display.style.backgroundImage = "url('" + weak_goblin.src + "')";
+				}
+				if(enemy_name == "cursed pumpkin")
+				{
+					var pumpkin = document.createElement('img');
+					pumpkin.src = "textures\\pumpkin.png";
+					enemy_img_display.style.backgroundImage = "url('" + pumpkin.src + "')";
+				}
 				
 				var player_healthbar = document.createElement('div');
 				player_healthbar.setAttribute('id','player_healthbar');
 				game_main.appendChild(player_healthbar);
 				
 				player_healthbar.style.width = "1020px";
-				player_healthbar.style.height = "120px";
+				player_healthbar.style.height = "10px";
 				
 				var player_stats = document.createElement('div');
 				player_stats.setAttribute('id','player_stats');
@@ -774,84 +906,363 @@
 				player_stats_health.innerHTML = player_health;
 				player_stats.appendChild(player_stats_health);
 				
-				player_stats_health.style.paddingLeft = "20px";
-				player_stats_health.style.paddingTop = "80px";
+				player_stats_health.style.paddingLeft = "30px";
+				player_stats_health.style.marginTop = "80px";
+				player_stats_health.style.fontSize = "25px";
+				player_stats_health.style.position = "absolute";
+				
+				var health_icon = document.createElement('img');
+				health_icon.setAttribute('id','health_icon');
+				health_icon.src = 'textures\\health_icon.png';
+				player_stats.appendChild(health_icon);
+				
+				health_icon.style.marginTop = "82px";
+				health_icon.style.marginLeft = "5px";
+				health_icon.style.position = "absolute";
+				
+				var player_stats_damage = document.createElement('p');
+				player_stats_damage.setAttribute('id','player_stats_damage');
+				player_stats_damage.innerHTML = player_damage;
+				player_stats.appendChild(player_stats_damage);
+				
+				player_stats_damage.style.paddingLeft = "30px";
+				player_stats_damage.style.marginTop = "105px";
+				player_stats_damage.style.position = "absolute";
+				player_stats_damage.style.fontSize = "25px";
+				
+				var damage_icon = document.createElement('img');
+				damage_icon.setAttribute('id','damage_icon');
+				damage_icon.src = 'textures\\damage_icon.png';
+				player_stats.appendChild(damage_icon);
+				
+				damage_icon.style.marginTop = "106px";
+				damage_icon.style.marginLeft = "5px";
+				damage_icon.style.position = "absolute";
+				
+				var player_stats_defense = document.createElement('p');
+				player_stats_defense.setAttribute('id','player_stats_defense');
+				player_stats_defense.innerHTML = player_defense;
+				player_stats.appendChild(player_stats_defense);
+				
+				player_stats_defense.style.paddingLeft = "30px";
+				player_stats_defense.style.marginTop = "130px";
+				player_stats_defense.style.position = "absolute";
+				player_stats_defense.style.fontSize = "25px";
+				
+				var defense_icon = document.createElement('img');
+				defense_icon.setAttribute('id','defense_icon');
+				defense_icon.src = 'textures\\defense_icon.png';
+				player_stats.appendChild(defense_icon);
+				
+				defense_icon.style.marginTop = "131px";
+				defense_icon.style.marginLeft = "5px";
+				defense_icon.style.position = "absolute";
 				
 			}
 
 		CreateMain()
 		
 		var current_turn = 0;
-		var current_enemy = 0;
+		var current_enemy = 1;
 		var difficulty_multiplier = 1;
-		
-		if(current_enemy < 2)
-		{
-			var enemy_random = Math.floor(Math.random() * 3);
-			
-			if(enemy_random == 0)
-			{
-				enemy_name = "weak slime";
-				var enemy_health = Math.floor(16 * difficulty_multiplier);
-				var enemy_damage = Math.floor(2 * difficulty_multiplier);
-				var enemy_defense = 0;
-							
-				var gold_reward = 2;
-				var exp_reward = 5;
-			} else if(enemy_random == 1)
-			{
-				enemy_name = "weak goblin";
-				var enemy_health = Math.floor(11 * difficulty_multiplier);
-				var enemy_damage = Math.floor(3 * difficulty_multiplier);
-				var enemy_defense = 0;
-							
-				var gold_reward = 6;
-				var exp_reward = 2;
-			} else if(enemy_random = 2)
-			{
-				enemy_name = "boar";
-				var enemy_health = Math.floor(14 * difficulty_multiplier);
-				var enemy_damage = Math.floor(2 * difficulty_multiplier);
-				var enemy_defense = Math.floor(1 * difficulty_multiplier);
-							
-				var gold_reward = 5;
-				var exp_reward = 5;
-			}	
-		}
 		
 		var player_health = 40;
 		var player_damage = 3;
 		var player_defense = 0;
+		var player_gold = 0;
+		var player_exp = 0;
+	
+		var enemy_random = Math.floor(Math.random() * 3);
+			
+		if(enemy_random == 0)
+		{
+			enemy_name = "weak slime";
+			var enemy_health = Math.floor(16 * difficulty_multiplier);
+			var enemy_damage = Math.floor(2 * difficulty_multiplier);
+			var enemy_defense = 0;
+							
+			var gold_reward = 2;
+			var exp_reward = 5;
+			
+		} else if(enemy_random == 1)
+		{
+			enemy_name = "weak goblin";
+			var enemy_health = Math.floor(11 * difficulty_multiplier);
+			var enemy_damage = Math.floor(3 * difficulty_multiplier);
+			var enemy_defense = 0;
+							
+			var gold_reward = 6;
+			var exp_reward = 2;
+		} else if(enemy_random == 2)
+		{
+			enemy_name = "cursed pumpkin";
+			var enemy_health = Math.floor(14 * difficulty_multiplier);
+			var enemy_damage = Math.floor(2 * difficulty_multiplier);
+			var enemy_defense = Math.floor(1 * difficulty_multiplier);
+							
+			var gold_reward = 5;
+			var exp_reward = 5;
+		}
+		
+		var enemy_random1 = Math.floor(Math.random() * 3);
+			
+		if(enemy_random1 == 0)
+		{
+			enemy_name1 = "weak slime";
+			var enemy_health1 = Math.floor(16 * difficulty_multiplier);
+			var enemy_damage1 = Math.floor(2 * difficulty_multiplier);
+			var enemy_defense1 = 0;
+							
+			var gold_reward1 = 2;
+			var exp_reward1 = 5;
+		} else if(enemy_random1 == 1)
+		{
+			enemy_name1 = "weak goblin";
+			var enemy_health1 = Math.floor(11 * difficulty_multiplier);
+			var enemy_damage1 = Math.floor(3 * difficulty_multiplier);
+			var enemy_defense1 = 0;
+							
+			var gold_reward1 = 6;
+			var exp_reward1 = 2;
+		} else if(enemy_random1 == 2)
+		{
+			enemy_name1 = "cursed pumpkin";
+			var enemy_health1 = Math.floor(14 * difficulty_multiplier);
+			var enemy_damage1 = Math.floor(2 * difficulty_multiplier);
+			var enemy_defense1 = Math.floor(1 * difficulty_multiplier);
+							
+			var gold_reward1 = 5;
+			var exp_reward1 = 5;
+		}	
+		
+		var enemy_random2 = Math.floor(Math.random() * 3);
+			
+		if(enemy_random2 == 0)
+		{
+			enemy_name2 = "weak slime";
+			var enemy_health2 = Math.floor(16 * difficulty_multiplier);
+			var enemy_damage2 = Math.floor(2 * difficulty_multiplier);
+			var enemy_defense2 = 0;
+							
+			var gold_reward2 = 2;
+			var exp_reward2 = 5;
+		} else if(enemy_random2 == 1)
+		{
+			enemy_name2 = "weak goblin";
+			var enemy_health2 = Math.floor(11 * difficulty_multiplier);
+			var enemy_damage2 = Math.floor(3 * difficulty_multiplier);
+			var enemy_defense2 = 0;
+							
+			var gold_reward2 = 6;
+			var exp_reward2 = 2;
+		} else if(enemy_random2 = 2)
+		{
+			enemy_name2 = "cursed pumpkin";
+			var enemy_health2 = Math.floor(14 * difficulty_multiplier);
+			var enemy_damage2 = Math.floor(2 * difficulty_multiplier);
+			var enemy_defense2 = Math.floor(1 * difficulty_multiplier);
+							
+			var gold_reward2 = 5;
+			var exp_reward2 = 5;
+		}	
+		
+		
 		function enemy_deal_damage()
 		{
-			if(current_turn == 0)
+			if(current_turn == 1)
 			{
-				var player_health_reference = document.getElementById('player_stats_health');
-				if(player_defense > enemy_damage)
+				if(current_enemy == 1)
 				{
-					player_health -= 1;
-				} else {
-					player_health -= (enemy_damage - player_defense);
+					var player_health_reference = document.getElementById('player_stats_health');
+					if(player_defense > enemy_damage)
+					{
+						player_health -= 1;
+					} else {
+						player_health -= (enemy_damage - player_defense);
+					}
+					player_health_reference.innerHTML = player_health;
+					current_turn -= 1;
 				}
-				player_health_reference.innerHTML = player_health;
-				current_turn -= 1;
+				if(current_enemy == 2)
+				{
+					var player_health_reference = document.getElementById('player_stats_health');
+					if(player_defense > enemy_damage1)
+					{
+						player_health -= 1;
+					} else {
+						player_health -= (enemy_damage1 - player_defense);
+					}
+					player_health_reference.innerHTML = player_health;
+					current_turn -= 1;
+				}
+				if(current_enemy == 3)
+				{
+					var player_health_reference = document.getElementById('player_stats_health');
+					if(player_defense > enemy_damage2)
+					{
+						player_health -= 1;
+					} else {
+						player_health -= (enemy_damage2 - player_defense);
+					}
+					player_health_reference.innerHTML = player_health;
+					current_turn -= 1;
+				}
+			}
+			if(player_health <= 0)
+			{
+				alert("You lost!");
+				
 			}
 		}
 		function player_deal_damage()
 		{
 			if(current_turn == 0)
 			{
-				var enemy_health_reference = document.getElementById('enemy_stats_health');
-				if(enemy_defense > player_damage)
+				if(current_enemy == 1)
 				{
-					enemy_health -= 1;
-				} else {
-					enemy_health -= (player_damage - enemy_defense);
+					var enemy_health_reference = document.getElementById('enemy_stats_health');
+					if(enemy_defense > player_damage)
+					{
+						enemy_health -= 1;
+					} else {
+						enemy_health -= (player_damage - enemy_defense);
+					}
+					enemy_health_reference.innerHTML = enemy_health;
+					current_turn += 1;
+					const enemy_attack = setTimeout(enemy_deal_damage,1000)
+				} else if(current_enemy == 2)
+				{
+					var enemy_health_reference = document.getElementById('enemy_stats_health');
+					if(enemy_defense1 > player_damage)
+					{
+						enemy_health1 -= 1;
+					} else {
+						enemy_health1 -= (player_damage - enemy_defense1);
+					}
+					enemy_health_reference.innerHTML = enemy_health1;
+					current_turn += 1;
+					const enemy_attack = setTimeout(enemy_deal_damage,1000)
+				} else if(current_enemy == 3)
+				{
+					var enemy_health_reference = document.getElementById('enemy_stats_health');
+					if(enemy_defense2 > player_damage)
+					{
+						enemy_health2 -= 1;
+					} else {
+						enemy_health2 -= (player_damage - enemy_defense2);
+					}
+					enemy_health_reference.innerHTML = enemy_health2;
+					current_turn += 1;
+					const enemy_attack = setTimeout(enemy_deal_damage,1000)
 				}
-				enemy_health_reference.innerHTML = enemy_health;
+			}
+			if(current_enemy == 1 && enemy_health <= 0)
+			{
+				player_gold += gold_reward;
+				player_exp += exp_reward;
+				current_turn = 0;
+				var enemy_health_reference = document.getElementById('enemy_stats_health');
+				var enemy_name_reference = document.getElementById('enemy_stats_name');
+				var enemy_damage_reference = document.getElementById('enemy_stats_damage');
+				var enemy_defense_reference = document.getElementById('enemy_stats_defense');
+				var player_gold_reference =  document.getElementById('player_stats_gold');
+				player_gold_reference.innerHTML = player_gold
+				enemy_name_reference.innerHTML = '';
+				enemy_health_reference.innerHTML = enemy_health1;
+				current_enemy = 2;
+				var enemy_img_display = document.getElementById('enemy_img_display');
+				enemy_img_display.innerHTML == '';
+				if(enemy_name1 == "weak slime")
+				{
+					var weak_slime_img = document.createElement('img');
+					weak_slime_img.src = 'textures\\weak_slime.png';
+					
+					enemy_img_display.style.backgroundImage = 'url("' + weak_slime_img.src + '")';
+					
+					enemy_name_reference.innerHTML = enemy_name1;
+					enemy_damage_reference.innerHTML = enemy_damage1;
+					enemy_defense_reference.innerHTML = enemy_defense1;
+					
+					
+				}else if(enemy_name1 == "weak goblin")
+				{
+					var weak_goblin_img = document.createElement('img');
+					weak_goblin_img.src = 'textures\\weak_goblin.png';
+					
+					enemy_img_display.style.backgroundImage = 'url("' + weak_goblin_img.src + '")';
+					
+					enemy_name_reference.innerHTML = enemy_name1;
+					enemy_damage_reference.innerHTML = enemy_damage1;
+					enemy_defense_reference.innerHTML = enemy_defense1;
+				}else if(enemy_name1 = "cursed pumpkin")
+				{
+					var pumpkin_img = document.createElement('img');
+					pumpkin_img.src = 'textures\\pumpkin.png';
+					
+					enemy_img_display.style.backgroundImage = 'url("' + pumpkin_img.src + '")';
+					
+					enemy_name_reference.innerHTML = enemy_name1
+					enemy_damage_reference.innerHTML = enemy_damage1;
+					enemy_defense_reference.innerHTML = enemy_defense1;
+				}
+			}
+			if(current_enemy == 2 && enemy_health1	 <= 0)
+			{
+				player_gold += gold_reward;
+				player_exp += exp_reward;
+				current_turn = 0;
+				var	enemy_health_reference = document.getElementById('enemy_stats_health');
+				var enemy_name_reference = document.getElementById('enemy_stats_name');
+				var enemy_damage_reference = document.getElementById('enemy_stats_damage');
+				var enemy_defense_reference = document.getElementById('enemy_stats_defense');
+				var player_gold_reference =  document.getElementById('player_stats_gold');
+				player_gold_reference.innerHTML = player_gold;
+				enemy_name_reference.innerHTML = '';
+				enemy_health_reference.innerHTML = enemy_health2;
+				current_enemy = 3;
+				
+				var enemy_img_display = document.getElementById('enemy_img_display');
+				enemy_img_display.innerHTML == '';
+				if(enemy_name2 == "weak slime")
+				{
+					var weak_slime_img = document.createElement('img');
+					weak_slime_img.src = 'textures\\weak_slime.png';
+					
+					enemy_img_display.style.backgroundImage = 'url("' + weak_slime_img.src + '")';
+					
+					enemy_name_reference.innerHTML = enemy_name2;
+					enemy_damage_reference.innerHTML = enemy_damage2;
+					enemy_defense_reference.innerHTML = enemy_defense2;
+					
+				}else if(enemy_name2 == "weak goblin")
+				{
+					var weak_goblin_img = document.createElement('img');
+					weak_goblin_img.src = 'textures\\weak_goblin.png';
+					
+					enemy_img_display.style.backgroundImage = 'url("' + weak_goblin_img.src + '")';
+					
+					enemy_name_reference.innerHTML = enemy_name2;
+				}else if(enemy_name2 = "cursed pumpkin")
+				{
+					var pumpkin_img = document.createElement('img');
+					pumpkin_img.src = 'textures\\pumpkin.png';
+					enemy_img_display.style.backgroundImage = 'url("' + pumpkin_img.src + '")';
+					
+					enemy_name_reference.innerHTML = enemy_name2;
+					enemy_damage_reference.innerHTML = enemy_damage2;
+					enemy_defense_reference.innerHTML = enemy_defense2;
+				}
+			}
+			if(current_enemy == 3 && enemy_health2 <= 0)
+			{
+				var	enemy_health_reference = document.getElementById('enemy_stats_health');
+				enemy_health_reference.innerHTML = 0;
+				const wait = setTimeout(victory,1000);
+			}
+			function victory() {
+				alert("You won!");
 			}
 		}
-	
 		</script>
 	</body>
 </html>
